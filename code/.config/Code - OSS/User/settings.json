@@ -1,0 +1,80 @@
+{
+    "workbench.colorCustomizations": {
+        "editorBracketHighlight.foreground1": "#b37a00",
+        "editorBracketHighlight.foreground2": "#00aa00",
+        "editorBracketHighlight.foreground3": "#1f7fdf",
+        "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000"
+    },
+    "editor.tokenColorCustomizations": {
+        "[Merry Christmas]": {
+            "comments": "#009b1a",
+            "textMateRules": [
+                {
+                    "scope": "comment.block.documentation",
+                    "settings": {
+                        "foreground": "#009b1a"
+                    }
+                }
+            ]
+        }
+    },
+    // ========== Editor Behavior ========== //
+    "editor.fontSize": 15,
+    "editor.stickyScroll.maxLineCount": 3,
+    "diffEditor.ignoreTrimWhitespace": false,
+    // ========== File Explorer ========== //
+    "explorer.autoReveal": false,
+    "explorer.confirmDelete": false,
+    // ========== Terminal ========== //
+    "terminal.integrated.fontSize": 15,
+    // ========== Window & Workbench ========== //
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.panel.opensMaximized": "never",
+    // ========== Debugging ========== //
+    "debug.console.fontSize": 12,
+    "debug.inlineValues": "on",
+    "debug.onTaskErrors": "abort",
+    "debug.openDebug": "neverOpen",
+    // ========== Tasks ========== //
+    "task.autoDetect": "off",
+    // ========== Git ========== //
+    "git.blame.editorDecoration.enabled": false,
+    "git.blame.statusBarItem.enabled": true,
+    // ========== Language-Specific ========== //
+    // Latex
+    "[latex]": {
+        "editor.wordWrap": "on",
+        "editor.defaultFormatter": "mathematic.vscode-latex",
+    },
+    // Python
+    "python.terminal.executeInFileDir": true,
+    "python.analysis.typeCheckingMode": "off",
+    "autopep8.args": [
+        "--max-line-length=120"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/arno/Documents/UGent/PhD/codes/pypackages/"
+    ],
+    // C/C++
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format-18",
+    "C_Cpp.doxygen.generatedStyle": "/**",
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.intelliSenseEngine": "disabled", // disable if clangd is used
+    "clangd.path": "/usr/bin/clangd",
+    "editor.inlayHints.enabled": "off", // disable clangd inlay hints
+    // XML
+    "xml.format.maxLineWidth": 0,
+    "xml.format.spaceBeforeEmptyCloseTag": false,
+    // ========== Extensions ========== //
+    "latex-workshop.view.pdf.invert": 1,
+    "latex-workshop.view.pdf.color.dark.backgroundColor": "#DEDEDE",
+    "latex-workshop.view.pdf.color.dark.pageBorderColor": "#000000",
+    "latex-workshop.view.pdf.color.dark.pageColorsBackground": "#DEDEDE",
+    "git.openRepositoryInParentFolders": "never",
+    "explorer.confirmDragAndDrop": false,
+    "supermaven.otherWarning": false,
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Monokai",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Symbols Nerd Font'",
+}
