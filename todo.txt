@@ -1,0 +1,9 @@
+- increase Hz of monitor (xrandr only shows 60Hz)
+- set yazi editor correctly to nano
+- fix kitty theme (can't seem to import theme.conf)
+- set up tmux
+- remove dolphin once yazi is fully up and working
+- switch yazi q and Q keybinds
+- make easy swtich to light theme in waybar
+
+- finally: convert laptop to arch when dotfiles are ready
