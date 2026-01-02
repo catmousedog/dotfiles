@@ -59,5 +59,7 @@ set target_ws (math "round($row * $matrix_size + $col + 1)")
 
 # Switch workspace
 hyprctl dispatch $argv[1] $target_ws
+hyprctl keyword animation "workspaces,1,$speed,almostLinear,fade"
+
 
 

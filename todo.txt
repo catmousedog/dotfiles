@@ -3,8 +3,8 @@
 - kitty
     - change font
 - yazi
-    - switch yazi q and Q keybinds
     - set yazi editor correctly to nano or vscode
+    - set yazi theme correctly
 - waybar
     - make easy swtich to light theme in waybar
     - add waybar buttons to change Hz? (test in game first? can vsync also work at 60fps if monitor is set to 120?)

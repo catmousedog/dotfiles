@@ -439,5 +439,33 @@
         "key": "alt+o",
         "command": "-clangd.switchheadersource",
         "when": "editorTextFocus && resourceLangId == 'c' || editorTextFocus && resourceLangId == 'cpp' || editorTextFocus && resourceLangId == 'cuda-cpp' || editorTextFocus && resourceLangId == 'objective-c' || editorTextFocus && resourceLangId == 'objective-cpp'"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "editorScroll",
+        "when": "editorTextFocus",
+        "args": {
+            "to": "up",
+            "by": "line",
+            "value": 10
+        }
+    },
+    {
+        "key": "ctrl+down",
+        "command": "editorScroll",
+        "when": "editorTextFocus",
+        "args": {
+            "to": "down",
+            "by": "line",
+            "value": 10
+        }
+    },
+    {
+        "key": "alt+q",
+        "command": "cursorMove",
+        "when": "editorTextFocus",
+        "args": {
+            "to": "viewPortCenter",
+        }
     }
 ]
