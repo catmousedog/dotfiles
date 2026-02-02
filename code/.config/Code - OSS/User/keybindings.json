@@ -313,10 +313,6 @@
         "when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
     },
     {
-        "key": "ctrl+4",
-        "command": "workbench.explorer.fileView.focus"
-    },
-    {
         "key": "ctrl+k ctrl+2",
         "command": "-editor.foldLevel2",
         "when": "editorTextFocus && foldingEnabled"
@@ -367,7 +363,7 @@
         "command": "-workbench.action.focusFourthEditorGroup"
     },
     {
-        "key": "ctrl+3",
+        "key": "-ctrl+3",
         "command": "workbench.panel.chat.view.copilot.focus"
     },
     {
@@ -446,7 +442,7 @@
         "when": "editorTextFocus",
         "args": {
             "to": "up",
-            "by": "line",
+            "by": "wrappedLine",
             "value": 10
         }
     },
@@ -456,7 +452,7 @@
         "when": "editorTextFocus",
         "args": {
             "to": "down",
-            "by": "line",
+            "by": "wrappedLine",
             "value": 10
         }
     },
@@ -467,5 +463,41 @@
         "args": {
             "to": "viewPortCenter",
         }
-    }
+    },
+    {
+        "key": "ctrl+shift+y",
+        "command": "-chatEditor.action.accept",
+        "when": "chatEdits.hasEditorModifications && chatEdits.isGlobalEditingSession && editorFocus && !chatEdits.isCurrentlyBeingModified || chatEdits.hasEditorModifications && chatEdits.isGlobalEditingSession && notebookEditorFocused && !chatEdits.isCurrentlyBeingModified"
+    },
+    {
+        "key": "ctrl+3",
+        "command": "workbench.debug.action.focusRepl",
+        "when": "workbench.panel.repl.view.active"
+    },
+    {
+        "key": "ctrl+shift+y",
+        "command": "-workbench.debug.action.toggleRepl",
+        "when": "workbench.panel.repl.view.active"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+4",
+        "command": "workbench.debug.action.focusWatchView"
+    },
+    {
+        "key": "ctrl+shift+w",
+        "command": "editor.debug.action.selectionToWatch"
+    },
 ]

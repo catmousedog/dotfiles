@@ -1,13 +1,24 @@
 {
+    // ========== Fonts ========== //
+    "editor.fontSize": 18,
+    "terminal.integrated.fontSize": 18,
+    "debug.console.fontSize": 12,
     // ========== Editor ========== //
-    "editor.fontSize": 15,
     "editor.stickyScroll.maxLineCount": 3,
     "editor.formatOnSave": true,
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Symbols Nerd Font'",
     "editor.inlayHints.enabled": "off", // maybe add keybind for this?
     "editor.cursorSurroundingLines": 20,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+    "editor.unicodeHighlight.allowedCharacters": {
+        "’": true
+    },
     // ========== Terminal ========== //
-    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.debug.action.focusRepl", // allows to focus debug console while terminal is focused
+        "workbench.debug.action.focusWatchView"
+    ],
     // ========== File Explorer ========== //
     "explorer.autoReveal": false,
     "explorer.confirmDelete": false,
@@ -15,12 +26,12 @@
     // ========== Window & Workbench ========== //
     "window.commandCenter": false,
     "workbench.panel.opensMaximized": "never",
-    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.colorTheme": "Catppuccin Macchiato",
     // ========== Debugging ========== //
-    "debug.console.fontSize": 12,
     "debug.inlineValues": "on",
     "debug.onTaskErrors": "abort",
     "debug.openDebug": "neverOpen",
+    "lldb.showDisassembly": "never",
     // ========== Tasks ========== //
     "task.autoDetect": "off",
     // ========== Git ========== //
@@ -28,14 +39,27 @@
     "git.blame.statusBarItem.enabled": true,
     "git.openRepositoryInParentFolders": "never",
     // ========== Language-Specific ========== //
+    // Python
     "python.terminal.executeInFileDir": true,
+    "python.defaultInterpreterPath": "~/.venv/script/bin/python",
+    "python.envFile": "~/.venv/script/",
+    // C/C++
     "clangd.path": "/usr/bin/clangd",
-    "clangd.arguments": [
-        "--fallback-style=LLVM"
-    ],
     "[cpp]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
+    // LaTeX
+    "latex-workshop.latex.outDir": "build",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.view.pdf.color.dark.backgroundColor": "#1e1e2e", // base
+    "latex-workshop.view.pdf.color.dark.pageBorderColor": "#45475a", // surface1
+    // "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#cdd6f4", // text
+    // "latex-workshop.view.pdf.color.dark.pageColorsBackground": "#181825", // mantle
+    "latex-workshop.formatting.latex": "tex-fmt",
     // ========== SuperMaven ========== // 
     "supermaven.otherWarning": false,
+    "chat.viewTitle.enabled": false,
+    // ========== Newly Added ========== // 
+    "comment-driver.length": 120,
+    "comment-driver.shouldLengthIncludeIndent": true,
 }

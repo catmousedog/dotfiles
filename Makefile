@@ -1,5 +1,5 @@
 # Variables
-STOW_PKGS := backgrounds themes watrix greetd hyprland awww hypridle waybar fish kitty yazi wofi code
+STOW_PKGS := backgrounds themes watrix hyprland awww hypridle waybar fish kitty yazi wofi code openconnect-sso
 SYS_STOW_PKGS := greetd
 
 .PHONY: all install user system clean
@@ -8,7 +8,7 @@ SYS_STOW_PKGS := greetd
 user:
 	stow --target=$(HOME) --restow $(STOW_PKGS)
 
-sytem:
+system:
 	sudo stow --target=/ --restow $(SYS_STOW_PKGS)
 
 user-adopt:
