@@ -427,6 +427,28 @@
         "when": "editorTextFocus"
     },
     {
+        "key": "shift+alt+up",
+        "command": "cursorMove",
+        "args": {
+            "to": "up",
+            "by": "wrappedLine",
+            "value": 5,
+            "select": true
+        },
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+down",
+        "command": "cursorMove",
+        "args": {
+            "to": "down",
+            "by": "wrappedLine",
+            "value": 5,
+            "select": true
+        },
+        "when": "editorTextFocus"
+    },
+    {
         "key": "ctrl+numpad_add",
         "command": "clangd.switchheadersource",
         "when": "editorTextFocus && resourceLangId == 'c' || editorTextFocus && resourceLangId == 'cpp' || editorTextFocus && resourceLangId == 'cuda-cpp' || editorTextFocus && resourceLangId == 'objective-c' || editorTextFocus && resourceLangId == 'objective-cpp'"
@@ -499,5 +521,23 @@
     {
         "key": "ctrl+shift+w",
         "command": "editor.debug.action.selectionToWatch"
+    },
+    {
+        "key": "shift+alt+down",
+        "command": "-editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+up",
+        "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "f6",
+        "command": "-workbench.action.focusNextPart"
+    },
+    {
+        "key": "shift+f6",
+        "command": "-workbench.action.focusPreviousPart"
     },
 ]

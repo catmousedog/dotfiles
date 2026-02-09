@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/fish
 
 set matrix_size 3
 set clamp true

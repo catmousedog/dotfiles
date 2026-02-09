@@ -7,7 +7,7 @@
     "editor.stickyScroll.maxLineCount": 3,
     "editor.formatOnSave": true,
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Symbols Nerd Font'",
-    "editor.inlayHints.enabled": "off", // maybe add keybind for this?
+    "editor.inlayHints.enabled": "off", // inline variable names 
     "editor.cursorSurroundingLines": 20,
     "editor.insertSpaces": false,
     "editor.tabSize": 4,
@@ -25,8 +25,10 @@
     "explorer.confirmDragAndDrop": false,
     // ========== Window & Workbench ========== //
     "window.commandCenter": false,
+    "window.customMenuBarAltFocus": false,
     "workbench.panel.opensMaximized": "never",
-    "workbench.colorTheme": "Catppuccin Macchiato",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.colorTheme": "Catppuccin Mocha",
     // ========== Debugging ========== //
     "debug.inlineValues": "on",
     "debug.onTaskErrors": "abort",
@@ -46,20 +48,33 @@
     // C/C++
     "clangd.path": "/usr/bin/clangd",
     "[cpp]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     },
     // LaTeX
     "latex-workshop.latex.outDir": "build",
     "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.view.pdf.color.dark.backgroundColor": "#1e1e2e", // base
     "latex-workshop.view.pdf.color.dark.pageBorderColor": "#45475a", // surface1
+    "latex-workshop.formatting.latex": "tex-fmt",
     // "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#cdd6f4", // text
     // "latex-workshop.view.pdf.color.dark.pageColorsBackground": "#181825", // mantle
-    "latex-workshop.formatting.latex": "tex-fmt",
+    // QML
+    "qt-qml.qmlls.useQmlImportPathEnvVar": true,
+    "qt-core.additionalQtPaths": [
+        {
+            "name": "Qt-5.15.18-linux-g++_from_PATH",
+            "path": "/usr/bin/qmake"
+        }
+    ],
+    "qt-qml.doNotAskForQmllsDownload": true,
+    "qmlFormat.command": "/usr/lib/qt6/bin/qmlformat",
     // ========== SuperMaven ========== // 
     "supermaven.otherWarning": false,
     "chat.viewTitle.enabled": false,
     // ========== Newly Added ========== // 
-    "comment-driver.length": 120,
+    "comment-driver.length": 100,
     "comment-driver.shouldLengthIncludeIndent": true,
+    "comment-driver.lineFiller": " ",
+    "comment-driver.mainHeaderFiller": "=",
+    "comment-driver.subheaderFiller": "-",
 }

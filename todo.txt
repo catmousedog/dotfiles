@@ -1,5 +1,5 @@
 - set up tmux
-- remove dolphin once yazi is fully up and working
+- make dolphin look better
 - kitty
     - change font
 - yazi
@@ -13,5 +13,9 @@
     - add scrolling to workspaces (shift is horizontal)
 - theme
     - automate theme switching (waybar)
+- configure wofi to look nice
+- make audio menu volume
+- look into ags
+- setup eza to replace ls, la, ll, dl, lt
 
 - finally: convert laptop to arch when dotfiles are ready

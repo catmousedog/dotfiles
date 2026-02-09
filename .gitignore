@@ -1,3 +1,6 @@
 # background images
 backgrounds/.config/backgrounds/*.jpg
 backgrounds/.config/backgrounds/*.png
+
+# quickshell
+quickshell/.config/quickshell/.qmlls.ini
