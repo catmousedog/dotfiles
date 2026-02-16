@@ -21,6 +21,7 @@ Singleton {
     /* ------------------------------------------- Fonts ------------------------------------------- */
     readonly property string barFontColor: Theme.text
     readonly property real barFontSize: 13.5
+    // readonly property real barFontSizeSmall: 12
     readonly property string barFontFamily: "Noto Sans Mono"
     readonly property int barFontWeight: Font.Bold
 
@@ -28,15 +29,21 @@ Singleton {
     readonly property int barMarginTop: 5
     readonly property int barMarginSide: 10
     readonly property real barHeightFactor: 1 / 45
-    readonly property real barWidthFactor: 1 / 10
 
     /* ========================================================================================== */
     /*                                            Clock                                           */
     /* ========================================================================================== */
     readonly property string clockFormat: "dddd dd MMM | hh:mm"
+    readonly property real clockBarWidthFactor: 1 / 10
 
     /* ============================================================================================= */
     /*                                           Workspace                                           */
     /* ============================================================================================= */
 
+    /* ========================================================================================== */
+    /*                                          Sound Bar                                         */
+    /* ========================================================================================== */
+
+    readonly property real soundBarWidthFactor: 1 / 20
+    readonly property int soundScrollInterval: 1
 }

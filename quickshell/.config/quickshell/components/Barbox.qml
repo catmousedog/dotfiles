@@ -33,5 +33,6 @@ Rectangle {
         radius: implicitHeight / 2
 
         color: Theme.base
+        enabled: false
     }
 }

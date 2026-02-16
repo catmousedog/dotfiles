@@ -5,17 +5,18 @@
 - yazi
     - set yazi editor correctly to nano or vscode
     - set yazi theme correctly
-- waybar
+- quickshell
     - make easy swtich to light theme in waybar
-    - add waybar buttons to change Hz? (test in game first? can vsync also work at 60fps if monitor is set to 120?)
     - add waybar buttons to swithc JBL vs Razer
-    - add tooltip to workspace showing the active workspaces in a 3x3 grid? if possible even an overview mode but that seems quite complicated
     - add scrolling to workspaces (shift is horizontal)
+    - power mode for laptop
+    - volume scroller
+    - system tray
 - theme
     - automate theme switching (waybar)
-- configure wofi to look nice
-- make audio menu volume
-- look into ags
+-wofi
+    - configure wofi to look nice
+    - remove many useless runs
 - setup eza to replace ls, la, ll, dl, lt
 
 - finally: convert laptop to arch when dotfiles are ready
