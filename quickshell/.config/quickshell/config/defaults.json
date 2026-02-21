@@ -19,18 +19,26 @@
 	},
 	"left": {},
 	"center": {
+		"widthFactor": 0.1,
 		"clock": {
-			"format": "dddd dd MMM | hh:mm",
-			"widthFactor": 0.1
+			"format": "dddd dd MMM | hh:mm"
 		}
 	},
 	"right": {
-		"audio": {
-			"widthFactor": 0.05,
-			"scrollInterval": 1
+		"widthFactor": 0.05,
+		"spacing": 12,
+		"battery": {
+			"iconSize": 13.5,
+			"iconYOffset": -1
 		},
-		"systray": {
-			"iconSize": 18
+		"audio": {
+			"scrollInterval": 1,
+			"iconSize": 13.5,
+			"iconYOffset": -2
+		},
+		"bluetooth": {
+			"iconSize": 13.5,
+			"iconYOffset": -2
 		}
 	}
 }

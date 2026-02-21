@@ -1,6 +1,6 @@
 # background images
-backgrounds/.config/backgrounds/*.jpg
-backgrounds/.config/backgrounds/*.png
+backgrounds/.config/backgrounds/*
+!background/.config/background/.gitkeep
 
 # quickshell
 quickshell/.config/quickshell/local/*
@@ -9,3 +9,6 @@ quickshell/.config/quickshell/local/*
 # hyprland
 hyprland/.config/hypr/local/*
 !hyprland/.config/hypr/local/.gitkeep
+
+# hypridle
+hypridle/.config/hypr/hypridle.conf

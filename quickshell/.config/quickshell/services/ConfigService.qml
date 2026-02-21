@@ -73,8 +73,6 @@ Singleton {
     }
 
     function getColor(jsonkey) {
-        console.log(jsonkey);
-        console.log(get(jsonkey));
         return Theme.getColor(get(jsonkey));
     }
 }

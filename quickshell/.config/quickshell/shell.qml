@@ -7,5 +7,5 @@ import qs.components
 Variants {
     model: Quickshell.screens
 
-    delegate: Bar {}
+    delegate: StatusBar {}
 }
