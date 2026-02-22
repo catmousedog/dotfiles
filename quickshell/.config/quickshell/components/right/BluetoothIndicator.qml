@@ -23,14 +23,16 @@ IconText {
     }
 
     function getText() {
-        if (BluetoothService.connected.length > 0) {
-            return BluetoothService.connected.length.toString();
+        if (BluetoothService.enabled) {
+            if (BluetoothService.connected.length > 0) {
+                return BluetoothService.connected.length.toString();
+            }
         }
         return "";
     }
 
     function getColor() {
-        if (BluetoothService.enabled) {
+        if (BluetoothService.connected.length > 0) {
             return Theme.blue;
         }
         return null;

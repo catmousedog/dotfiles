@@ -78,4 +78,6 @@
     "comment-driver.mainHeaderFiller": "=",
     "comment-driver.subheaderFiller": "-",
     "terminal.integrated.initialHint": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "keyboard.dispatch": "keyCode"
 }

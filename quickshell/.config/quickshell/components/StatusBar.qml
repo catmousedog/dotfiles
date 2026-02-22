@@ -18,6 +18,8 @@ PanelWindow {
 
     anchors.top: true
     margins.top: ConfigService.get("common.layout.marginTop")
+    margins.right: ConfigService.get("common.layout.marginSide")
+    margins.left: ConfigService.get("common.layout.marginSide")
     color: "transparent"
 
     Left {}

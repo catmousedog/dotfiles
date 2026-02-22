@@ -16,6 +16,7 @@ RowLayout {
     Barbox {
         implicitHeight: parent.height
         implicitWidth: parent.height * 1.1
+        anchors.centerIn: parent
 
         Bartext {
             anchors.centerIn: parent

@@ -1,5 +1,7 @@
 // BluetoothService.qml
+
 pragma Singleton
+
 import Quickshell
 import Quickshell.Bluetooth
 import Quickshell.Io

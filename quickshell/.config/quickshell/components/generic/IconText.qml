@@ -32,6 +32,7 @@ Item {
             x: root.iconXOffset
             y: root.iconYOffset
         }
+        // font.weight: 400
 
         Binding {
             when: root.color !== null
