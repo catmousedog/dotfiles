@@ -11,11 +11,11 @@ user:
 system:
 	sudo stow --target=/ --restow $(SYS_STOW_PKGS)
 
-user-adopt:
-	stow --target=$(HOME) --restow $(STOW_PKGS) --adopt
+user-delete:
+	stow --target=$(HOME) $(STOW_PKGS) -D
 
-system-adopt:
-	sudo stow --target=/ --restow $(SYS_STOW_PKGS) --adopt
+system-delete:
+	sudo stow --target=/ $(SYS_STOW_PKGS) -D
 
 # Unstow everything
 clean:
