@@ -13,15 +13,7 @@ RowLayout {
     anchors.verticalCenter: parent.verticalCenter
     layoutDirection: Qt.LeftToRight
 
-    Barbox {
-        implicitHeight: parent.height
-        implicitWidth: parent.height * 1.1
-
-        Bartext {
-            anchors.centerIn: parent
-            text: WorkspaceService.activeWorkspace?.name ?? ""
-        }
-    }
+    WorkspaceIndicator {}
 
     Barbox {
         id: test

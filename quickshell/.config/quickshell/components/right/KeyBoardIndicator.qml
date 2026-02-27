@@ -11,7 +11,6 @@ Bartext {
             return "BE";
         if (KeyboardService.layout.includes("English (US)"))
             return "US";
-        // fallback: grab first two letters
         return KeyboardService.layout;
     }
 }

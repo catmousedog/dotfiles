@@ -1,5 +1,3 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export --path PYTHONPATH:/home/arno/Documents/PhD/coding/SKIRT/PTS9/
 SETUVAR __fish_initialized:4300
-SETUVAR fish_user_paths:/home/arno/Documents/PhD/coding/SKIRT/SKIRT9/release/SKIRT/main

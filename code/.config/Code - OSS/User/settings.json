@@ -1,7 +1,7 @@
 {
     // ========== Fonts ========== //
-    "editor.fontSize": 18,
-    "terminal.integrated.fontSize": 18,
+    "editor.fontSize": 16,
+    "terminal.integrated.fontSize": 16,
     "debug.console.fontSize": 12,
     // ========== Editor ========== //
     "editor.stickyScroll.maxLineCount": 3,
@@ -43,21 +43,23 @@
     // ========== Language-Specific ========== //
     // Python
     "python.terminal.executeInFileDir": true,
-    "python.defaultInterpreterPath": "~/.venv/script/bin/python",
-    "python.envFile": "~/.venv/script/",
+    "python.defaultInterpreterPath": "~/.venvs/script/bin/python",
     // C/C++
     "clangd.path": "/usr/bin/clangd",
     "[cpp]": {
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     },
     // LaTeX
-    "latex-workshop.latex.outDir": "build",
+    "latex-workshop.latex.outDir": "pdf",
+    "latex-workshop.latex.auxDir": "build",
+    "latex-workshop.latex.bibDirs": "build",
+    "latex-workshop.latex.texDirs": "build",
     "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.view.pdf.color.dark.backgroundColor": "#1e1e2e", // base
     "latex-workshop.view.pdf.color.dark.pageBorderColor": "#45475a", // surface1
     "latex-workshop.formatting.latex": "tex-fmt",
     // "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#cdd6f4", // text
-    // "latex-workshop.view.pdf.color.dark.pageColorsBackground": "#181825", // mantle
+    "latex-workshop.view.pdf.color.dark.pageColorsBackground": "#181825", // mantle
     // QML
     "qt-qml.qmlls.useQmlImportPathEnvVar": true,
     "qt-core.additionalQtPaths": [

@@ -12,3 +12,7 @@ hyprland/.config/hypr/local/*
 
 # hypridle
 hypridle/.config/hypr/hypridle.conf
+
+# fish
+fish/.config/fish/local/*
+!fish/.config/fish/local/.gitkeep

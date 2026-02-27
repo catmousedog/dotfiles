@@ -7,7 +7,7 @@ import qs.services
 Item {
     id: root
 
-    implicitWidth: iconText.implicitWidth + (textText.visible ? spacing + textText.implicitWidth : 0)
+    implicitWidth: iconText.implicitWidth + (textText.visible ? spacing + textText.implicitWidth : 0) + Math.max(0, iconXOffset)
     implicitHeight: textText.implicitHeight
 
     // shared
@@ -32,7 +32,6 @@ Item {
             x: root.iconXOffset
             y: root.iconYOffset
         }
-        // font.weight: 400
 
         Binding {
             when: root.color !== null

@@ -17,13 +17,11 @@ PanelWindow {
     implicitWidth: screen.width - 2 * HyprlandService.gapsOut
 
     anchors.top: true
-    // margins.top: ConfigService.get("common.layout.marginTop")
-    // margins.right: ConfigService.get("common.layout.marginSide")
-    // margins.left: ConfigService.get("common.layout.marginSide")
 
     margins.top: HyprlandService.gapsOut
     margins.right: HyprlandService.gapsOut
     margins.left: HyprlandService.gapsOut
+    margins.bottom: HyprlandService.gapsIn
     color: "transparent"
 
     Left {}

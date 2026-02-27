@@ -1,65 +1,117 @@
 #!/usr/bin/fish
 
-set matrix_size 3
+if test (count $argv) -lt 1
+    echo "Usage: watrix <action> <dir>"
+    echo "Actions: workspace, movetoworkspace"
+    echo "Dir: left, right, up, down"
+    exit 1
+end
+
+set action $argv[1]
+set dir $argv[2]
+
+# Check args
+if test $action != "workspace" -a $action != "movetoworkspace"
+    echo "Invalid action"
+    exit 1
+end
+
+if test $dir != "left" -a $dir != "right" -a $dir != "up" -a $dir != "down"
+    echo "Invalid direction"
+    exit 1
+end
+
+set matrix 3
 set clamp true
 set speed 2
+set num_workspaces (math "$matrix * $matrix")
 
-set matrix_max (math $matrix_size - 1)
-
+# Cycle index in range [0, matrix[
 function cycle
+    set -l i $argv[1]
+
     if $clamp
-        math "min($matrix_max, max(0, $argv[1]))"
+        math "min($matrix - 1, max(0, $i))"
     else
-        math "($argv[1] + $matrix_size) % $matrix_size"
+        math "($argv[1] + $matrix) % $matrix"
     end
 end
 
-# Get active workspace ID (JSON, reliable)
-function active_ws
-    hyprctl activeworkspace -j | jq '.id'
+# Convert the logical id to the actual workspace id for a given monitor
+function logical_to_actual
+    set -l id $argv[1]
+    set -l mon $argv[2]
+
+    math "$id + $mon * $num_workspaces + 1"
 end
 
-function anim -a dir
-    switch $dir
-        case hor
-            set slide slide
-        case ver
-            set slide slidevert
-        case '*'
-            exit 1
+# Move all monitors to the logical id
+function move_workspaces
+    set -l id $argv[1]
+
+    # Total number of monitors
+    set num_monitors (count hyprctl monitors)
+
+    # All hyprland dispatch commands appended
+    set -l hypr_disp ""
+
+    # current focused monitor
+    set cur (hyprctl activeworkspace -j | jq '.monitorID')
+
+    # Move focused window to the target logical id
+    if test "$action" = "movetoworkspace"
+        set hypr_disp "dispatch movetoworkspacesilent $(logical_to_actual $id $cur) ; "    
     end
-    echo $slide
-    hyprctl keyword animation "workspaces,1,$speed,almostLinear,$slide"
+
+    # Focus and move all monitors
+    for mon in (seq 0 (math "$num_monitors - 1"))
+        # Monitor workspace ID (not logical anymore)
+        set hypr_disp "$hypr_disp dispatch focusmonitor $mon ; dispatch workspace $(logical_to_actual $id $mon) ; "
+    end
+
+    # Focus back to current monitor
+    set hypr_disp "$hypr_disp dispatch focusmonitor $cur ; "
+
+    echo $hypr_disp
 end
 
-# Convert workspace ID → row / col
-set row (math "floor(($(active_ws) - 1) / $matrix_size)")
-set col (math "($(active_ws) - 1) % $matrix_size")
+# Current logical workspace index [0, 9[
+set id (hyprctl activeworkspace -j | jq '.id')
+set id (math "($id - 1) % $num_workspaces")
+
+# logical row and column
+set row (math "floor($id / $matrix)")
+set col (math "$id % $matrix")
 
 # Decide movement + animation direction
-switch $argv[2]
+switch $dir
     case left
         set col (cycle (math "$col - 1"))
-        anim hor
+        set slide "slide"
     case right
         set col (cycle (math "$col + 1"))
-        anim hor
+        set slide "side"
     case up
         set row (cycle (math "$row - 1"))
-        anim ver
+        set slide "slidevert"
     case down
         set row (cycle (math "$row + 1"))
-        anim ver
+        set slide "slidevert"
     case '*'
         exit 1
 end
 
-# Convert row / col → workspace ID
-set target_ws (math "round($row * $matrix_size + $col + 1)")
+# Set correct animation for moving
+hyprctl keyword animation "workspaces,1,$speed,almostLinear,$slide"
 
-# Switch workspace
-hyprctl dispatch $argv[1] $target_ws
+# Target logical id [0, 9[
+set id (math "$row * $matrix + $col")
+
+# Move all monitors to the target logical id
+set hypr_disp (move_workspaces $id)
+
+# Dispatch full command
+hyprctl --batch $hypr_disp
+
+# Reset animation to fade in case jumping to workspace
 hyprctl keyword animation "workspaces,1,$speed,almostLinear,fade"
-
-
-

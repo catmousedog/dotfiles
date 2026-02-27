@@ -10,8 +10,12 @@ Singleton {
     id: root
 
     property int gapsOut: 0
+    property int gapsIn: 0
 
-    Component.onCompleted: gapsOutProc.running = true
+    Component.onCompleted: {
+        gapsOutProc.running = true;
+        gapsInProc.running = true;
+    }
 
     Process {
         id: gapsOutProc
@@ -23,6 +27,21 @@ Singleton {
                     root.gapsOut = parseInt(parsed.custom.split(" ")[0]);
                 } catch (e) {
                     console.error("[HyprlandService] Failed to parse gaps_out:", e);
+                }
+            }
+        }
+    }
+
+    Process {
+        id: gapsInProc
+        command: ["hyprctl", "getoption", "general:gaps_in", "-j"]
+        stdout: SplitParser {
+            onRead: data => {
+                try {
+                    const parsed = JSON.parse(data);
+                    root.gapsIn = parseInt(parsed.custom.split(" ")[0]);
+                } catch (e) {
+                    console.error("[HyprlandService] Failed to parse gaps_in:", e);
                 }
             }
         }

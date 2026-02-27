@@ -28,6 +28,10 @@ Loader {
                 const icons = ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"];
                 return icons[Math.floor(BatteryService.percentage * 10)];
             }
+            if (BatteryService.full) {
+                return "󰁹";
+            }
+            return "󰂑";
         }
 
         function getText() {
