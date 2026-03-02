@@ -10,9 +10,6 @@
 			"size": 13.5,
 			"color": "text",
 			"weight": 700
-		},
-		"layout": {
-			"heightFactor": 0.022
 		}
 	},
 	"left": {},

@@ -43,7 +43,7 @@
     // ========== Language-Specific ========== //
     // Python
     "python.terminal.executeInFileDir": true,
-    "python.defaultInterpreterPath": "~/.venvs/script/bin/python",
+    // "python.defaultInterpreterPath": "~/.venvs/script/bin/python",
     // C/C++
     "clangd.path": "/usr/bin/clangd",
     "[cpp]": {
