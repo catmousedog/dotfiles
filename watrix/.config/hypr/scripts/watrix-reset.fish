@@ -35,8 +35,9 @@ end
 # Dispatch full command
 hyprctl --batch $hypr_disp
 
-# Focus monitor 0
-hyprctl dispatch focusmonitor 0
+# Focus primary monitor (first monitor by name, stable across hibernate/resume)
+set primary_mon (hyprctl monitors -j | jq -r 'sort_by(.name) | .[0].name')
+hyprctl dispatch focusmonitor $primary_mon
 
 # Go to center workspace (5 in a 3x3)
 hyprctl dispatch workspace 5

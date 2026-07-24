@@ -26,6 +26,14 @@ set clamp true
 set speed 2
 set num_workspaces (math "$matrix * $matrix")
 
+# Monitor NAMES (stable across hibernate/resume), sorted for a consistent logical order
+function get_monitors
+    hyprctl monitors -j | jq -r 'sort_by(.name) | .[].name'
+end
+
+set monitors (get_monitors)
+set num_monitors (count $monitors)
+
 # Cycle index in range [0, matrix[
 function cycle
     set -l i $argv[1]
@@ -49,28 +57,27 @@ end
 function move_workspaces
     set -l id $argv[1]
 
-    # Total number of monitors
-    set num_monitors (hyprctl monitors -j | jq 'length')
-
     # All hyprland dispatch commands appended
     set -l hypr_disp ""
 
-    # current focused monitor
-    set cur (hyprctl activeworkspace -j | jq '.monitorID')
+    # Currently focused monitor NAME, mapped to its logical (0-based) index
+    set cur_name (hyprctl activeworkspace -j | jq -r '.monitor')
+    set cur (math (contains -i $cur_name $monitors) - 1)
 
     # Move focused window to the target logical id
     if test "$action" = "movetoworkspace"
-        set hypr_disp "dispatch movetoworkspacesilent $(logical_to_actual $id $cur) ; "    
+        set hypr_disp "dispatch movetoworkspacesilent $(logical_to_actual $id $cur) ; "
     end
 
     # Focus and move all monitors
-    for mon in (seq 0 (math "$num_monitors - 1"))
-        # Monitor workspace ID (not logical anymore)
-        set hypr_disp "$hypr_disp dispatch focusmonitor $mon ; dispatch workspace $(logical_to_actual $id $mon) ; "
+    for i in (seq 1 $num_monitors)
+        set mon_name $monitors[$i]
+        set mon (math "$i - 1")
+        set hypr_disp "$hypr_disp dispatch focusmonitor $mon_name ; dispatch workspace $(logical_to_actual $id $mon) ; "
     end
 
     # Focus back to current monitor
-    set hypr_disp "$hypr_disp dispatch focusmonitor $cur ; "
+    set hypr_disp "$hypr_disp dispatch focusmonitor $cur_name ; "
 
     echo $hypr_disp
 end
