@@ -12,6 +12,9 @@
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
 	"editor.tabSize": 4,
+	"editor.smoothScrolling": true,
+	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.cursorBlinking": "smooth",
 	"editor.unicodeHighlight.allowedCharacters": {
 		"’": true
 	},
@@ -20,6 +23,7 @@
 		"workbench.debug.action.focusRepl", // allows to focus debug console while terminal is focused
 		"workbench.debug.action.focusWatchView"
 	],
+	"terminal.integrated.smoothScrolling": true,
 	// ========== File Explorer ========== //
 	"explorer.autoReveal": false,
 	"explorer.confirmDelete": false,
@@ -32,6 +36,7 @@
 	"workbench.colorTheme": "Catppuccin Mocha",
 	"workbench.startupEditor": "none",
 	"workbench.tree.indent": 16,
+	"workbench.list.smoothScrolling": true,
 	// ========== Debugging ========== //
 	"debug.inlineValues": "on",
 	"debug.onTaskErrors": "abort",
@@ -75,7 +80,12 @@
 	"qmlFormat.command": "/usr/lib/qt6/bin/qmlformat",
 	// ========== SuperMaven ========== // 
 	"supermaven.otherWarning": false,
-	"chat.viewTitle.enabled": false,
+	// ========== Comment Driver ========== //
+	"comment-driver.length": 60,
+	"comment-driver.lineFiller": "=",
+	"comment-driver.subheaderFiller": "=",
+	"comment-driver.subheaderTransform": "uppercase",
+	"comment-driver.mainHeaderFiller": "=",
 	// ========== Newly Added ========== // 
 	"terminal.integrated.initialHint": false,
 	"security.workspace.trust.untrustedFiles": "open",

@@ -11,6 +11,8 @@ Bartext {
             return "BE";
         if (KeyboardService.layout.includes("English (US)"))
             return "US";
+        if (KeyboardService.layout.includes("Russian"))
+            return "RU";
         return KeyboardService.layout;
     }
 }
