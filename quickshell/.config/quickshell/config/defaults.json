@@ -1,5 +1,8 @@
 {
 	"common": {
+		"bar": {
+			"size": 2.2
+		},
 		"theme": {
 			"background": "base",
 			"borderColor": "mauve",

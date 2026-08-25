@@ -14,7 +14,7 @@ PanelWindow {
     required property var modelData
     screen: modelData
 
-    implicitHeight: 2.2 * fontMetrics.height
+    implicitHeight: ConfigService.get("common.bar.size") * fontMetrics.height
     implicitWidth: screen.width - 2 * HyprlandService.gapsOut
 
     Text {
