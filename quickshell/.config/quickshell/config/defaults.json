@@ -15,7 +15,12 @@
 			"weight": 700
 		}
 	},
-	"left": {},
+	"left": {
+		"tray": {
+			"iconSize": 20,
+			"spacing": 8
+		}
+	},
 	"center": {
 		"widthFactor": 0.1,
 		"clock": {
@@ -26,6 +31,7 @@
 		"widthFactor": 0.05,
 		"margin": 0,
 		"spacing": 12,
+		"rightPadding": 0,
 		"battery": {
 			"iconSize": 13.5,
 			"iconYOffset": -1,

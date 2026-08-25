@@ -15,31 +15,5 @@ RowLayout {
 
     WorkspaceIndicator {}
 
-    Barbox {
-        id: test
-        implicitHeight: parent.height
-        implicitWidth: {
-            let len = TrayService.items.length;
-            if (len == 0) {
-                return 0;
-            } else {
-                return len * 100;
-            }
-        }
-
-        Bartext {
-            function trayStatusText() {
-                let len = TrayService.items.length;
-                text = "";
-                for (let i = 0; i < len; i++) {
-                    const item = TrayService.items[i];
-                    text += item.id;
-                }
-                return text;
-            }
-
-            anchors.centerIn: parent
-            text: trayStatusText()
-        }
-    }
+    TrayIndicator {}
 }
