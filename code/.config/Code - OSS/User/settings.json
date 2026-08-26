@@ -18,6 +18,7 @@
 	"editor.unicodeHighlight.allowedCharacters": {
 		"’": true
 	},
+	"diffEditor.renderSideBySide": true,
 	// ========== Terminal ========== //
 	"terminal.integrated.commandsToSkipShell": [
 		"workbench.debug.action.focusRepl", // allows to focus debug console while terminal is focused
@@ -28,9 +29,12 @@
 	"explorer.autoReveal": false,
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
-	// ========== Window & Workbench ========== //
+	// ========== Window ========== //
 	"window.commandCenter": false,
 	"window.customMenuBarAltFocus": false,
+	"window.openFilesInNewWindow": "off",
+	"window.openFoldersInNewWindow": "on",
+	// ========== Workbench ========== //
 	"workbench.panel.opensMaximized": "never",
 	"workbench.secondarySideBar.defaultVisibility": "hidden",
 	"workbench.colorTheme": "Catppuccin Mocha",
@@ -51,7 +55,7 @@
 	// ========== Language-Specific ========== //
 	// Python
 	"python.terminal.executeInFileDir": true,
-	// "python.defaultInterpreterPath": "~/.venvs/script/bin/python",
+	"python.defaultInterpreterPath": "~/.venvs/script/bin/python",
 	// C/C++
 	"clangd.path": "/usr/bin/clangd",
 	"[cpp]": {
