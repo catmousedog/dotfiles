@@ -1,23 +1,11 @@
 #!/usr/bin/fish
 
-set matrix 3
-set num_workspaces (math "$matrix * $matrix")
+source (dirname (status --current-filename))/watrix-common.fish
 
-# Convert any workspace id back into the primary monitor range
-function normalize_workspace
-    set -l wid $argv[1]
-
-    # Hyprland workspaces start at 1
-    math "(($wid - 1) % $num_workspaces) + 1"
-end
-
-# Get all windows
+# Move every window back into monitor 0's workspace range
 set clients (hyprctl clients -j)
+set -l hypr_disp "keyword animation workspaces,1,$speed,almostLinear,fade ; "
 
-# All hyprland dispatch commands appended
-set -l hypr_disp "keyword animation "workspaces,1,$speed,almostLinear,fade""
-
-# Move every window back to monitor 0 workspace range
 echo $clients | jq -c '.[]' | while read -l client
     set addr (echo $client | jq -r '.address')
     set wid  (echo $client | jq '.workspace.id')
@@ -28,16 +16,10 @@ echo $clients | jq -c '.[]' | while read -l client
     end
 
     set target (normalize_workspace $wid)
-
     set hypr_disp "$hypr_disp dispatch movetoworkspacesilent $target,address:$addr ; "
 end
 
-# Dispatch full command
 hyprctl --batch $hypr_disp
 
-# Focus primary monitor (first monitor by name, stable across hibernate/resume)
-set primary_mon (hyprctl monitors -j | jq -r 'sort_by(.name) | .[0].name')
-hyprctl dispatch focusmonitor $primary_mon
-
-# Go to center workspace (5 in a 3x3)
-hyprctl dispatch workspace 5
+# Re-sync every monitor to its correct workspace range/center (not just primary)
+watrix_sync

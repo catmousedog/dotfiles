@@ -21,15 +21,7 @@ if test $dir != "left" -a $dir != "right" -a $dir != "up" -a $dir != "down"
     exit 1
 end
 
-set matrix 3
-set clamp true
-set speed 2
-set num_workspaces (math "$matrix * $matrix")
-
-# Monitor NAMES (stable across hibernate/resume), sorted for a consistent logical order
-function get_monitors
-    hyprctl monitors -j | jq -r 'sort_by(.name) | .[].name'
-end
+source (dirname (status --current-filename))/watrix-common.fish
 
 set monitors (get_monitors)
 set num_monitors (count $monitors)
@@ -43,14 +35,6 @@ function cycle
     else
         math "($argv[1] + $matrix) % $matrix"
     end
-end
-
-# Convert the logical id to the actual workspace id for a given monitor
-function logical_to_actual
-    set -l id $argv[1]
-    set -l mon $argv[2]
-
-    math "$id + $mon * $num_workspaces + 1"
 end
 
 # Move all monitors to the logical id
@@ -82,7 +66,7 @@ function move_workspaces
     echo $hypr_disp
 end
 
-# Current logical workspace index [0, 9[
+# Current logical workspace index [0, num_workspaces[
 set id (hyprctl activeworkspace -j | jq '.id')
 set id (math "($id - 1) % $num_workspaces")
 
@@ -111,7 +95,7 @@ end
 # Set correct animation for moving
 hyprctl keyword animation "workspaces,1,$speed,almostLinear,$slide"
 
-# Target logical id [0, 9[
+# Target logical id [0, num_workspaces[
 set id (math "$row * $matrix + $col")
 
 # Move all monitors to the target logical id
