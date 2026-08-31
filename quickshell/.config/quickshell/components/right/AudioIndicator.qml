@@ -26,19 +26,10 @@ IconText {
     }
 
     function getIcon() {
-        var muted = AudioService.muted;
-        if (muted) {
-            return "󰖁";
+        if (AudioService.muted || AudioService.volume === 0) {
+            return "";
         }
-        var deviceIcon = AudioService.icon;
-        if (deviceIcon == "audio-card-analog") {
-            return "";
-        } else if (deviceIcon == "audio-headset") {
-            return "󱡏";
-        } else if (deviceIcon == "audio-card") {
-            return "";
-        }
-        return "";
+        return "";
     }
 
     function getText() {
