@@ -24,7 +24,7 @@ Singleton {
             onRead: data => {
                 try {
                     const parsed = JSON.parse(data);
-                    root.gapsOut = parseInt(parsed.custom.split(" ")[0]);
+                    root.gapsOut = parseInt(parsed.css.split(" ")[0]);
                 } catch (e) {
                     console.error("[HyprlandService] Failed to parse gaps_out:", e);
                 }
@@ -39,7 +39,7 @@ Singleton {
             onRead: data => {
                 try {
                     const parsed = JSON.parse(data);
-                    root.gapsIn = parseInt(parsed.custom.split(" ")[0]);
+                    root.gapsIn = parseInt(parsed.css.split(" ")[0]);
                 } catch (e) {
                     console.error("[HyprlandService] Failed to parse gaps_in:", e);
                 }
