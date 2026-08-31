@@ -41,27 +41,27 @@ end
 function move_workspaces
     set -l id $argv[1]
 
-    # All hyprland dispatch commands appended
+    # All hyprland eval commands appended
     set -l hypr_disp ""
 
     # Currently focused monitor NAME, mapped to its logical (0-based) index
     set cur_name (hyprctl activeworkspace -j | jq -r '.monitor')
     set cur (math (contains -i $cur_name $monitors) - 1)
 
-    # Move focused window to the target logical id
+    # Move focused window to the target logical id (without following it)
     if test "$action" = "movetoworkspace"
-        set hypr_disp "dispatch movetoworkspacesilent $(logical_to_actual $id $cur) ; "
+        set hypr_disp "eval hl.dispatch(hl.dsp.window.move({ workspace = '$(logical_to_actual $id $cur)', silent = true })) ; "
     end
 
     # Focus and move all monitors
     for i in (seq 1 $num_monitors)
         set mon_name $monitors[$i]
         set mon (math "$i - 1")
-        set hypr_disp "$hypr_disp dispatch focusmonitor $mon_name ; dispatch workspace $(logical_to_actual $id $mon) ; "
+        set hypr_disp "$hypr_disp eval hl.dispatch(hl.dsp.focus({ monitor = '$mon_name' })) ; eval hl.dispatch(hl.dsp.focus({ workspace = '$(logical_to_actual $id $mon)' })) ; "
     end
 
     # Focus back to current monitor
-    set hypr_disp "$hypr_disp dispatch focusmonitor $cur_name ; "
+    set hypr_disp "$hypr_disp eval hl.dispatch(hl.dsp.focus({ monitor = '$cur_name' })) ; "
 
     echo $hypr_disp
 end
@@ -79,9 +79,9 @@ switch $dir
     case left
         set col (cycle (math "$col - 1"))
         set slide "slide"
-    case right
-        set col (cycle (math "$col + 1"))
-        set slide "side"
+	case right
+		set col (cycle (math "$col + 1"))
+		set slide "slide"
     case up
         set row (cycle (math "$row - 1"))
         set slide "slidevert"
@@ -93,7 +93,7 @@ switch $dir
 end
 
 # Set correct animation for moving
-hyprctl keyword animation "workspaces,1,$speed,almostLinear,$slide"
+hyprctl eval "hl.animation({ leaf = 'workspaces', enabled = true, speed = $speed, bezier = 'almostLinear', style = '$slide' })"
 
 # Target logical id [0, num_workspaces[
 set id (math "$row * $matrix + $col")
@@ -102,7 +102,7 @@ set id (math "$row * $matrix + $col")
 set hypr_disp (move_workspaces $id)
 
 # Dispatch full command
-hyprctl --batch $hypr_disp
+hyprctl --batch "$hypr_disp"
 
 # Reset animation to fade in case jumping to workspace
-hyprctl keyword animation "workspaces,1,$speed,almostLinear,fade"
+hyprctl eval "hl.animation({ leaf = 'workspaces', enabled = true, speed = $speed, bezier = 'almostLinear', style = 'fade' })"

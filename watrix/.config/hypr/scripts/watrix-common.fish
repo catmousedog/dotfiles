@@ -40,19 +40,18 @@ function watrix_sync
         for id in (seq 0 (math "$num_workspaces - 1"))
             set -l mid (logical_to_actual $id $mon)
             if test $id -eq $center_id
-                hyprctl keyword workspace "$mid, monitor:$mon_name, default:true"
+                hyprctl eval "hl.workspace_rule({ workspace = '$mid', monitor = '$mon_name', default = true })"
             else
-                hyprctl keyword workspace "$mid, monitor:$mon_name"
+                hyprctl eval "hl.workspace_rule({ workspace = '$mid', monitor = '$mon_name' })"
             end
         end
 
         set -l center (logical_to_actual $center_id $mon)
-        # Explicitly focus + dispatch, don't rely on default:true alone to "stick"
-        set hypr_disp "$hypr_disp dispatch focusmonitor $mon_name ; dispatch workspace $center ; "
+        set hypr_disp "$hypr_disp eval hl.dispatch(hl.dsp.focus({ monitor = '$mon_name' })) ; eval hl.dispatch(hl.dsp.focus({ workspace = '$center' })) ; "
     end
 
     if test (count $monitors) -gt 0
-        set hypr_disp "$hypr_disp dispatch focusmonitor $monitors[1] ; "
+        set hypr_disp "$hypr_disp eval hl.dispatch(hl.dsp.focus({ monitor = '$monitors[1]' })) ; "
     end
 
     hyprctl --batch $hypr_disp
