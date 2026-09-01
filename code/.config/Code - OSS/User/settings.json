@@ -33,7 +33,7 @@
 	"window.commandCenter": false,
 	"window.customMenuBarAltFocus": false,
 	"window.openFilesInNewWindow": "off",
-	"window.openFoldersInNewWindow": "on",
+	"window.openFoldersInNewWindow": "off",
 	// ========== Workbench ========== //
 	"workbench.panel.opensMaximized": "never",
 	"workbench.secondarySideBar.defaultVisibility": "hidden",

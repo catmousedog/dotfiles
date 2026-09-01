@@ -1,9 +1,7 @@
-# yazi.toml
-
 [mgr]
 show_hidden = false
 
 [opener]
 edit = [
-	{ run = 'micro "$@"', block = true, for = "unix" },
+    { run = 'micro "%s"', block = true, for = "unix" },
 ]
